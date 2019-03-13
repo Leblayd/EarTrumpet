@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace EarTrumpet
 {
@@ -186,6 +188,27 @@ namespace EarTrumpet
                 }
             };
             return window;
+        }
+
+        private void VolumeTextBox_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return || e.Key == Key.Enter)
+                ((TextBox) sender)?.MoveFocus(new TraversalRequest(FocusNavigationDirection.Previous));
+        }
+
+        private void VolumeTextBox_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox) sender)?.SelectAll();
+        }
+        
+        private void SelectivelyIgnoreMouseButton(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is TextBox tb)
+            {
+                if (tb.IsKeyboardFocusWithin) return;
+                e.Handled = true;
+                tb.Focus();
+            }
         }
     }
 }

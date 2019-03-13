@@ -121,17 +121,17 @@
                                 </Style>
                             </ctl:VolumeSlider.Style>
                         </ctl:VolumeSlider>
-                        <TextBlock Grid.Column="2" Text="{Binding Device.Volume, Mode=OneWay}">
-                            <TextBlock.Style>
-                                <Style BasedOn="{StaticResource DeviceVolumeTextStyle}" TargetType="TextBlock">
+                        <TextBox Grid.Column="2" Text="{Binding Device.Volume, Mode=TwoWay}">
+                            <TextBox.Style>
+                                <Style BasedOn="{StaticResource DeviceVolumeTextStyle}" TargetType="TextBox">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Device.IsMuted}" Value="True">
                                             <Setter Property="Opacity" Value="{StaticResource MutedOpacity}" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+                            </TextBox.Style>
+                        </TextBox>
                     </Grid>
                 </Grid>
             </Border>

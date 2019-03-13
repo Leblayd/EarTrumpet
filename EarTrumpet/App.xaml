@@ -386,19 +386,26 @@
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="TextTrimming" Value="CharacterEllipsis" />
             </Style>
-            <Style x:Key="DeviceVolumeTextStyle" TargetType="{x:Type TextBlock}">
+            <Style x:Key="VolumeTextBoxStyle" TargetType="{x:Type TextBox}">
                 <Setter Property="Margin" Value="{StaticResource VolumeTextMargin}" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="FontSize" Value="{DynamicResource Mutable_DeviceVolumeTextFontSize}" />
+                <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="Theme:Brush.Foreground" Value="Text" />
+                <Setter Property="Theme:Brush.Background" Value="Transparent" />
+                <EventSetter Event="GotKeyboardFocus" Handler="VolumeTextBox_OnGotFocus"/>
+                <EventSetter Event="KeyUp" Handler="VolumeTextBox_OnKeyUp"/>
+                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="SelectivelyIgnoreMouseButton"/>
             </Style>
-            <Style x:Key="AppVolumeTextStyle" TargetType="{x:Type TextBlock}">
-                <Setter Property="Margin" Value="{StaticResource VolumeTextMargin}" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="VerticalAlignment" Value="Center" />
+            <Style x:Key="DeviceVolumeTextStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource VolumeTextBoxStyle}">
+                <Setter Property="FontSize" Value="{DynamicResource Mutable_DeviceVolumeTextFontSize}" />
+                <Setter Property="Theme:Brush.CaretBrush" Value="ApplicationTextDarkTheme" />
+                <Setter Property="Theme:Brush.SelectionBrush" Value="ApplicationTextDarkTheme" />
+            </Style>
+            <Style x:Key="AppVolumeTextStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource VolumeTextBoxStyle}">
                 <Setter Property="FontSize" Value="{DynamicResource Mutable_AppVolumeTextFontSize}" />
-                <Setter Property="Theme:Brush.Foreground" Value="Text" />
+                <Setter Property="Theme:Brush.CaretBrush" Value="SystemAccent" />
+                <Setter Property="Theme:Brush.SelectionBrush" Value="SystemAccent" />
             </Style>
             <Style x:Key="DeviceTitleTextStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="VerticalAlignment" Value="Center" />

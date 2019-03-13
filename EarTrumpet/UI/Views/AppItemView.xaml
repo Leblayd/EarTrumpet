@@ -97,16 +97,16 @@
                 </Style>
             </ctl:VolumeSlider.Style>
         </ctl:VolumeSlider>
-        <TextBlock Grid.Column="2" Text="{Binding Volume, Mode=OneWay}">
-            <TextBlock.Style>
-                <Style BasedOn="{StaticResource AppVolumeTextStyle}" TargetType="TextBlock">
+        <TextBox Grid.Column="2" Text="{Binding Volume, Mode=TwoWay}">
+            <TextBox.Style>
+                <Style BasedOn="{StaticResource AppVolumeTextStyle}" TargetType="TextBox">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding IsMuted}" Value="True">
                             <Setter Property="Opacity" Value="{StaticResource MutedOpacity}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </TextBlock.Style>
-        </TextBlock>
+            </TextBox.Style>
+        </TextBox>
     </Grid>
 </UserControl>
